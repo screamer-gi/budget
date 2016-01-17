@@ -1,0 +1,71 @@
+<style>
+    a {
+        text-decoration: none;
+    }
+    .center {
+        text-align: center;
+    }
+    .right {
+        text-align: right;
+    }
+    td {
+        padding: 2px;
+    }
+    .err {
+        color:red;
+    }
+    .date-column {
+        white-space: nowrap;
+    }
+</style>
+
+<?php
+$filters->setAttribute('action', $this->url('expense', array('action' => 'index')));
+$filters->prepare();
+
+echo $this->form()->openTag($filters);
+echo $this->formCollection($filters);
+echo $this->form()->closeTag();
+?>
+
+<table border="1">
+    <tr>
+        <th>Дата</th>
+        <th>Сумма</th>
+        <?php foreach ($categories as $title): ?>
+            <td><?=$title ?></td>
+        <?php endforeach; ?>
+        <th>Место</th>
+        <th>Нал</th>
+        <th>Комментарий</th>
+    </tr>
+    <?php foreach ($table as $date => $day): ?>
+        <?php if (!$day): ?>
+        <tr>
+            <td class="date-column"><a href="/expense/add?date=<?=$date?>"> + </a><?=$date?></td>
+        </tr>
+            <?php else : ?>
+                <?php foreach ($day as $row): ?>
+                    <tr>
+                        <td class="date-column"><a href="/expense/add?date=<?=$row['date']->format('d.m.Y') ?>"> + </a><?=$date ?><a href="/expense/edit/<?=$row['id'] ?>"> ~ </a><a style="margin-left: 1em" href="/expense/delete/<?=$row['id'] ?>" onclick="return confirm('Удалить запись?')"> x </a> </td>
+                        <td class="right<?=$row['disparity'] ? ' err' : ''?>"><?=$this->currencyFormat($row['amount'], 'UAH') ?></td>
+
+                        <?php foreach ($categories as $id => $title): ?>
+                            <td class="right"><?=isset($row['detail'][$id]) ? ($row['detail'][$id] != 0 ? $this->currencyFormat($row['detail'][$id], 'UAH') : '<span class="err">err</span>') : '' ?></td>
+                        <?php endforeach; ?>
+
+                        <td><?=$row['location'] ?></td>
+                        <td class="center"><?=$row['cash'] ? '+' : '' ?></td>
+                        <td><?=$row['comment'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+        <?php endif; ?>
+    <?php endforeach; ?>
+    <tr>
+        <th><?=$count?></th>
+        <th><?=$this->currencyFormat($summary, 'UAH')?></th>
+        <?php foreach ($categories as $id => $title): ?>
+        <th><?=$this->currencyFormat($categorySummary[$id], 'UAH')?></th>
+        <?php endforeach;?>
+    </tr>
+</table>

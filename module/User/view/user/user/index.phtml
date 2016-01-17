@@ -1,0 +1,6 @@
+<?php if ($identity) {
+$this->headScript()->appendFile($this->basePath() . '/js/modules/User/user/index.js'); ?>
+<div id="newsWidget"></div>
+<?php } else {
+    $this->headScript()->appendFile($this->basePath() . '/js/modules/User/user/login.js');
+} ?>

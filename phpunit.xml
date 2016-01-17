@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="test/Bootstrap.php" colors="false">
+    <testsuites>
+        <testsuite name="workit">
+            <directory>./module/News/test/NewsTest</directory>
+            <directory>./module/Request/test/RequestTest</directory>
+            <directory>./module/Task/test/TaskTest</directory>
+            <directory>./module/Auth/test/AuthTest</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

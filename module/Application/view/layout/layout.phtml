@@ -1,0 +1,34 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <?php echo $this->headTitle('Бюджет')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+    <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
+
+    <?php echo $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/favicon.ico'])
+                    ->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
+                    ->appendStylesheet($this->basePath() . '/css/main.css')
+                    ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
+    ?>
+
+    <script type="text/javascript" src="/js/underscore-1.5.1-min.js"></script>
+    <?php
+        $this->headScript()->appendFile($this->basePath() . '/js/jquery-1.7.2.min.js');
+
+        echo $this->headScript();
+    ?>
+
+  </head>
+
+  <body>
+      <div id='content'>
+          <div id='main-menu'></div>
+          <div id="container" class="container">
+              <?php echo $this->content; ?>
+          </div>
+      </div>
+  </body>
+</html>
