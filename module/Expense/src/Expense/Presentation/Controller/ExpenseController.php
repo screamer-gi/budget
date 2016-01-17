@@ -100,6 +100,7 @@ class ExpenseController extends IndexController//CrudActionController
         ,   'summary'         => $summary
         ,   'count'           => $count
         ,   'filters'         => $filterForm
+        ,   'weekdays'        => ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
         ]);
     }
 
