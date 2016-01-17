@@ -119,7 +119,7 @@ class ExpenseController extends IndexController//CrudActionController
             if ($form->isValid()) {
                 $this->expenseService->create($expense, $form->getInputFilter()->getValues());
                 $this->em->flush();///////////////////////////////
-                return $this->redirect()->toRoute('expense');
+                return $this->redirect()->toRoute('expense', [], ['query' => ['month' => $expense->date->format('m'), 'year' => $expense->date->format('Y')]]);
             }
             //else {Debug::dump( $form->getMessages()); Debug::dump($form->getData());die('false');}
         }
@@ -145,7 +145,7 @@ class ExpenseController extends IndexController//CrudActionController
             if ($form->isValid()) {
                 $this->expenseService->update($expense, $form->getInputFilter()->getValues());
                 $this->em->flush();
-                return $this->redirect()->toRoute('expense');
+                return $this->redirect()->toRoute('expense', [], ['query' => ['month' => $expense->date->format('m'), 'year' => $expense->date->format('Y')]]);
             }
         }
 
