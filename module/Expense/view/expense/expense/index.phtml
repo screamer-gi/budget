@@ -1,5 +1,6 @@
 <?php
 /** @var array $weekdays */
+$today = date('d.m.Y');
 ?>
 <style>
     a {
@@ -31,7 +32,7 @@ echo $this->formCollection($filters);
 echo $this->form()->closeTag();
 ?>
 
-<table border="1">
+<table class="table table-bordered">
     <tr>
         <th>Дата</th>
         <th>Сумма</th>
@@ -44,8 +45,15 @@ echo $this->form()->closeTag();
     </tr>
     <?php foreach ($table as $date => $day): ?>
         <?php if (!$day): ?>
-        <tr>
+        <tr<?=$date == $today ? ' class="info"' : ''?>>
             <td class="date-column"><a href="/expense/add?date=<?=$date?>"> + </a><?=sprintf('%s, %s', $weekdays[DateTime::createFromFormat('d.m.Y', $date)->format('w')], $date)?></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <?php foreach ($categories as $title): ?>
+                <td></td>
+            <?php endforeach; ?>
+            <td></td>
         </tr>
             <?php else : ?>
                 <?php foreach ($day as $row): ?>
