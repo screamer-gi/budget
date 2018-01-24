@@ -12,6 +12,8 @@ RUN pecl install intl xdebug && \
 
 WORKDIR /var/www/budget
 
+COPY composer.json composer.lock ./
+
 RUN composer install --prefer-dist --no-interaction
 
 ENTRYPOINT /bin/bash

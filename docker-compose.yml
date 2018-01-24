@@ -17,9 +17,12 @@ services:
 
   composer:
     container_name: budget-composer
-    build: ./docker/webserver/Dockerfile-composer
-    volumes_from:
-      - php
+    build:
+      context: ./docker/webserver
+      dockerfile: Dockerfile-composer
+    working_dir: /var/www/budget
+    volumes:
+      - '.:/var/www/budget'
 
   db:
     container_name: budget-db
