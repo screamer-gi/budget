@@ -1,0 +1,64 @@
+version: '2'
+
+services:
+
+  php:
+    container_name: budget-php
+    build: ./docker/webserver
+    working_dir: /var/www/budget
+    ports:
+      - '80:80'
+      - '9000:9001'
+    volumes:
+      - '.:/var/www/budget'
+    links:
+      - db
+      - db-test
+
+  composer:
+    container_name: budget-composer
+    build: ./docker/webserver/Dockerfile-composer
+    volumes_from:
+      - php
+
+  db:
+    container_name: budget-db
+    image: 'mysql:5.6'
+    ports:
+      - '3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=budget
+      - MYSQL_DATABASE=budget
+      - MYSQL_USER=budget
+      - MYSQL_PASSWORD=budget
+    volumes:
+      - budget-data:/var/lib/mysql
+      - ./docker/mysql/budget.sql:/docker-entrypoint-initdb.d/budget.sql
+
+  db-test:
+    container_name: budget-db-test
+    image: 'mysql:5.6'
+    ports:
+      - "3306"
+    volumes:
+      - ./docker/mysql/budget_test.sql:/docker-entrypoint-initdb.d/budget.sql
+    environment:
+      - MYSQL_ROOT_PASSWORD=budget
+      - MYSQL_DATABASE=budget_test
+      - MYSQL_USER=budget
+      - MYSQL_PASSWORD=budget
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: budget-pma
+    environment:
+      - PMA_ARBITRARY=1
+    restart: always
+    ports:
+      - '8080:80'
+    volumes:
+      - /sessions
+
+volumes:
+  budget-data:
+    driver: local

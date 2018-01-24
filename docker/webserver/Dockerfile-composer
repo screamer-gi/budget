@@ -1,0 +1,18 @@
+FROM composer/composer:php5
+
+RUN apt-get update && \
+ apt-get install -y php5-intl libicu-dev default-jre libtidy-dev && \
+ rm -rf /var/lib/apt/lists/*
+
+COPY ./php.ini /usr/local/etc/php/
+
+RUN pecl install intl xdebug && \
+    docker-php-ext-install pdo_mysql pcntl gettext intl tidy && \
+    docker-php-ext-enable xdebug
+
+WORKDIR /var/www/budget
+
+RUN composer install --prefer-dist --no-interaction
+
+ENTRYPOINT /bin/bash
+CMD ["true"]
