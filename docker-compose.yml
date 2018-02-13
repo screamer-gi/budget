@@ -6,10 +6,12 @@ services:
     container_name: budget-php
     build: ./docker/webserver
     working_dir: /var/www/budget
-    command: "composer install --prefer-dist --no-interaction"
+#    command: "composer install --prefer-dist --no-interaction"
+#    command: "true"
+#    tty: true
     ports:
       - '80:80'
-      - '9000:9001'
+      - '9000:9000'
     volumes:
       - '.:/var/www/budget'
     links:
@@ -20,7 +22,7 @@ services:
     container_name: budget-db
     image: 'mysql:5.6'
     ports:
-      - '3306'
+      - '3306:3306'
     environment:
       - MYSQL_ROOT_PASSWORD=budget
       - MYSQL_DATABASE=budget
