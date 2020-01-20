@@ -6,6 +6,7 @@ services:
     container_name: budget-php
     build: ./docker/webserver
     working_dir: /var/www/budget
+    command: "composer install --prefer-dist --no-interaction"
     ports:
       - '80:80'
       - '9000:9001'
@@ -14,15 +15,6 @@ services:
     links:
       - db
       - db-test
-
-  composer:
-    container_name: budget-composer
-    build:
-      context: ./docker/webserver
-      dockerfile: Dockerfile-composer
-    working_dir: /var/www/budget
-    volumes:
-      - '.:/var/www/budget'
 
   db:
     container_name: budget-db
