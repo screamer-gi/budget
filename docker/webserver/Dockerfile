@@ -1,15 +1,9 @@
 FROM composer AS composer
 
-
-FROM php:7.0-apache
-
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends libicu-dev default-jre libtidy-dev zlib1g-dev git \
-    && rm -r /var/lib/apt/lists/*
+FROM php:7.4-apache
 
 RUN pecl install xdebug && \
-    docker-php-ext-configure intl && \
-    docker-php-ext-install pdo_mysql intl zip && \
+    docker-php-ext-install pdo_mysql && \
     docker-php-ext-enable xdebug
 
 COPY ./php.ini /usr/local/etc/php/
@@ -20,5 +14,6 @@ RUN a2enmod rewrite \
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
+# todo: add composer and vendor/bin to default path
 
 WORKDIR /var/www/budget

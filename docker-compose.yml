@@ -20,7 +20,7 @@ services:
 
   db:
     container_name: budget-db
-    image: 'mysql:5.6'
+    image: 'mysql'
     ports:
       - '3306:3306'
     environment:
@@ -29,12 +29,12 @@ services:
       - MYSQL_USER=budget
       - MYSQL_PASSWORD=budget
     volumes:
-      - budget-data:/var/lib/mysql
+      - ./docker/mysql/data:/var/lib/mysql
       - ./docker/mysql/budget.sql:/docker-entrypoint-initdb.d/budget.sql
 
   db-test:
     container_name: budget-db-test
-    image: 'mysql:5.6'
+    image: 'mysql'
     ports:
       - "3306"
     volumes:
@@ -55,7 +55,3 @@ services:
       - '8080:80'
     volumes:
       - /sessions
-
-volumes:
-  budget-data:
-    driver: local

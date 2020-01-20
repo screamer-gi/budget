@@ -17,3 +17,5 @@ data/DoctrineORMModule/cache/
 
 # Windows thumbnail cache files
 Thumbs.db
+
+docker/mysql/data
