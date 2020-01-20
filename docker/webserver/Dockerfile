@@ -18,5 +18,6 @@ RUN a2enmod rewrite \
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
 # todo: add composer and vendor/bin to default path
+RUN composer global require laminas/laminas-migration
 
 WORKDIR /var/www/budget
