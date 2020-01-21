@@ -5,8 +5,8 @@ use Application\Filters\Set\CommonFactoryInterface                  as CommonFil
 use Common\Presentation\Zend\Form\Parameters\CommonFactoryInterface as CommonParamsFactory;
 use Common\Exceptions\ArgumentEmptyException;
 use Common\Service\CommonServiceInterface;
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\JsonModel;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\View\Model\JsonModel;
 
 class CrudActionController extends AbstractActionController
 {

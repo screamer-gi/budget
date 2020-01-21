@@ -2,7 +2,7 @@
 namespace Expense;
 
 use Expense\Presentation\Controller\ExpenseController;
-use Zend\Mvc\Controller\ControllerManager;
+use Laminas\Mvc\Controller\ControllerManager;
 
 return [
     'zendDiCompiler' => [

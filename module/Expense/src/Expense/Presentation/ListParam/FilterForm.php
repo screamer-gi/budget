@@ -1,7 +1,7 @@
 <?php
 namespace Expense\Presentation\ListParam;
 
-use Zend\Form\Form;
+use Laminas\Form\Form;
 
 class FilterForm extends Form {
     public function __construct()

@@ -16,7 +16,7 @@ use Expense\Presentation\ListParam\FilterForm;
 use Expense\Service\ExpenseService;
 use Functional as F;
 use Zend\Debug\Debug;
-use Zend\View\Model\ViewModel;
+use Laminas\View\Model\ViewModel;
 
 class ExpenseController extends IndexController//CrudActionController
 {

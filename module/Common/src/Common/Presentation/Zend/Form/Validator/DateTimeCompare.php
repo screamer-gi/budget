@@ -3,8 +3,8 @@
 namespace Common\Presentation\Zend\Form\Validator;
 
 use Common\Exceptions\ArgumentInvalidException;
-use Zend\Validator\AbstractValidator;
-use Zend\Validator\Exception;
+use Laminas\Validator\AbstractValidator;
+use Laminas\Validator\Exception;
 
 class DateTimeCompare extends AbstractValidator
 {

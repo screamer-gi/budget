@@ -8,12 +8,12 @@ use Lib\Auth\Service\AclInterface;
 use Lib\Auth\Service\AuthInterface;
 use User\Repository\SearchRepository;
 use User\Service\UserService;
-use Zend\Authentication\AuthenticationService;
-use Zend\Authentication\Result as Result;
-use Zend\Http\Headers;
-use Zend\Http\Response\Stream;
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\JsonModel;
+use Laminas\Authentication\AuthenticationService;
+use Laminas\Authentication\Result as Result;
+use Laminas\Http\Headers;
+use Laminas\Http\Response\Stream;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\View\Model\JsonModel;
 
 class SearchController extends AbstractActionController
 {

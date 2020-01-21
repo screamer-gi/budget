@@ -10,7 +10,7 @@ use Common\Presentation\Zend\Form\Parameters\PublisherFactoryInterface;
 use Common\Service\CommonServiceInterface;
 use Common\Service\CreateDeleteServiceInterface;
 use Common\Service\PublisherServiceInterface;
-use Zend\View\Model\JsonModel;
+use Laminas\View\Model\JsonModel;
 
 class ActionMaker
 {

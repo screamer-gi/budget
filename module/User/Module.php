@@ -1,18 +1,18 @@
 <?php
 namespace User;
 
-use Zend\Authentication\AuthenticationService;
-use Zend\Authentication\Adapter\DbTable as DbTableAuthAdapter;
+use Laminas\Authentication\AuthenticationService;
+use Laminas\Authentication\Adapter\DbTable as DbTableAuthAdapter;
 
 class Module
 {
     public function getAutoloaderConfig()
     {
         return array(
-            'Zend\Loader\ClassMapAutoloader' => array(
+            'Laminas\Loader\ClassMapAutoloader' => array(
                 __DIR__ . '/autoload_classmap.php',
             ),
-            'Zend\Loader\StandardAutoloader' => array(
+            'Laminas\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
@@ -41,7 +41,7 @@ class Module
                     //and has users table with columns : user_name and pass_word
                     //that password hashed with md5
                     /** @todo auth MUST use Doctrine DB Adapter */
-                    $dbAdapter           = $sm->get('Zend\Db\Adapter\Adapter');
+                    $dbAdapter           = $sm->get('Laminas\Db\Adapter\Adapter');
                     $dbTableAuthAdapter  = new DbTableAuthAdapter($dbAdapter, 'employee','username','password', '?');
 
                     $authService =

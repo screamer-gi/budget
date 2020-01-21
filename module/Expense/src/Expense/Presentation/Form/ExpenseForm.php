@@ -7,8 +7,8 @@ use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use Expense\Persistence\Entity\Category;
 use Expense\Persistence\Entity\Expense;
 use Expense\Persistence\Entity\Place;
-use Zend\Form\Element;
-use Zend\Form\Form;
+use Laminas\Form\Element;
+use Laminas\Form\Form;
 
 class ExpenseForm extends Form implements ObjectManagerAwareInterface
 {
@@ -92,7 +92,7 @@ class ExpenseForm extends Form implements ObjectManagerAwareInterface
 
         $this->add([
             'name' => 'details',
-            'type' => 'Zend\Form\Element\Collection',
+            'type' => 'Laminas\Form\Element\Collection',
             'options' => [
                 'count' => 2,
                 'should_create_template' => true,

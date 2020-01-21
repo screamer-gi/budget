@@ -5,7 +5,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use DoctrineModule\Persistence\ObjectManagerAwareInterface;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use Expense\Persistence\Entity\Place;
-use Zend\Form\Fieldset;
+use Laminas\Form\Fieldset;
 
 class ExpenseFieldset extends Fieldset implements ObjectManagerAwareInterface {
     protected $objectManager;
@@ -71,7 +71,7 @@ class ExpenseFieldset extends Fieldset implements ObjectManagerAwareInterface {
         ]);
 
         /*$this->add([
-            'type' => 'Zend\Form\Element\Collection',
+            'type' => 'Laminas\Form\Element\Collection',
             'name' => 'details',
             'options' => [
                 'count' => 2,

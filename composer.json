@@ -11,10 +11,11 @@
         "doctrine/doctrine-orm-module": "*",
         "doctrine/orm": "2.4.*",
         "phpunit/phpunit": "3.7.*",
-        "phake/phake" : "@stable",
+        "phake/phake": "@stable",
         "lstrojny/functional-php": "@stable",
         "symfony/yaml": "~2.0",
         "symfony/console": "*",
-        "aimfeld/zend-di-compiler": "1.*"
+        "aimfeld/zend-di-compiler": "1.*",
+        "laminas/laminas-dependency-plugin": "^1.0"
     }
 }

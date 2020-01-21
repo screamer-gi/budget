@@ -3,9 +3,9 @@
 namespace Application;
 
 use Application\DI\DIConfigurator;
-use Zend\Http\Response;
-use Zend\Mvc\ModuleRouteListener;
-use Zend\ServiceManager\ServiceManager;
+use Laminas\Http\Response;
+use Laminas\Mvc\ModuleRouteListener;
+use Laminas\ServiceManager\ServiceManager;
 
 class Module
 {
@@ -54,8 +54,8 @@ class Module
     public function getAutoloaderConfig()
     {
         return [
-            'Zend\Loader\ClassMapAutoloader' => [ __DIR__ . '/autoload_classmap.php' ],
-            'Zend\Loader\StandardAutoloader' => [
+            'Laminas\Loader\ClassMapAutoloader' => [ __DIR__ . '/autoload_classmap.php' ],
+            'Laminas\Loader\StandardAutoloader' => [
                 'namespaces' => [
                     __NAMESPACE__  => __DIR__ . '/src/' . __NAMESPACE__,
                 ]

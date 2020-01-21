@@ -7,7 +7,7 @@ use Common\Presentation\Zend\Controller\CrudActionController;
 use Partner\Filters\Sets\CategoryFiltersFactory;
 use Partner\Form\CategoryParameters\ParametersFactory;
 use Partner\Service\PartnerCategoryService;
-use Zend\View\Model\JsonModel;
+use Laminas\View\Model\JsonModel;
 
 class ExpenseCategoryController extends CrudActionController
 {

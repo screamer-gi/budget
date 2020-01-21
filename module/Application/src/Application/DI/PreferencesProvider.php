@@ -2,9 +2,9 @@
 
 namespace Application\DI;
 
-use Zend\Di\InstanceManager;
-use Zend\ServiceManager\ServiceManager;
-use Zend\Di\ServiceLocator;
+use Laminas\Di\InstanceManager;
+use Laminas\ServiceManager\ServiceManager;
+use Laminas\Di\ServiceLocator;
 
 class PreferencesProvider
 {

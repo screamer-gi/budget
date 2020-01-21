@@ -1,7 +1,7 @@
 <?php
 namespace Common\Presentation\Zend\Controller;
 
-use Zend\Mvc\Controller\ControllerManager;
+use Laminas\Mvc\Controller\ControllerManager;
 
 class Factory
 {

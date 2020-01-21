@@ -5,8 +5,8 @@ namespace Common\Presentation\Zend\Controller;
 use Common\Exceptions\ArgumentEmptyException;
 use Common\Presentation\Zend\Form\Parameters\CreateActionFactoryInterface;
 use Common\Service\CreateDeleteServiceInterface;
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\JsonModel;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\View\Model\JsonModel;
 
 class CreateDeleteActionController extends AbstractActionController
 {

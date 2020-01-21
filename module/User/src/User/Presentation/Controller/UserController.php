@@ -5,12 +5,12 @@ namespace Lib\User\Presentation\Controller;
 use Lib\Auth\Service\AuthInterface;
 use Lib\FileStore\Service\FileService;
 use Lib\User\Presentation\Form\LoginForm;
-use Zend\Authentication\Adapter\DbTable as AuthAdapter;
-use Zend\Authentication\AuthenticationService;
-use Zend\Authentication\Result as Result;
-use Zend\Http\Headers;
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\JsonModel;
+use Laminas\Authentication\Adapter\DbTable as AuthAdapter;
+use Laminas\Authentication\AuthenticationService;
+use Laminas\Authentication\Result as Result;
+use Laminas\Http\Headers;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\View\Model\JsonModel;
 
 class UserController extends AbstractActionController
 {
@@ -50,7 +50,7 @@ class UserController extends AbstractActionController
 
             // get the db adapter
             $sm = $this->getServiceLocator();
-            $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+            $dbAdapter = $sm->get('Laminas\Db\Adapter\Adapter');
 
             // create auth adapter
             $authAdapter = new AuthAdapter($dbAdapter);
@@ -142,7 +142,7 @@ class UserController extends AbstractActionController
         $ext  = $file ? $file->extension : 'gif';
 
 
-        $response = new \Zend\Http\Response\Stream();
+        $response = new \Laminas\Http\Response\Stream();
         $response->setStream(fopen($this->fileService->getStorePath() . $path, 'r'));
         $response->setStatusCode(200);
 

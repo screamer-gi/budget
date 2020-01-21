@@ -18,7 +18,7 @@ class Bootstrap
             },
             []
         );
-        $zendAutoLoader = new Zend\Loader\StandardAutoloader([ 'namespaces' => $modulesNamespaces ]);
+        $zendAutoLoader = new Laminas\Loader\StandardAutoloader([ 'namespaces' => $modulesNamespaces ]);
         spl_autoload_register([$zendAutoLoader, 'autoload']);
     }
 }

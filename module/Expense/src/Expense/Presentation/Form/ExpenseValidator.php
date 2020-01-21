@@ -2,10 +2,10 @@
 namespace Expense\Presentation\Form;
 
 use Common\Exceptions\MethodNotUsedException;
-use Zend\InputFilter\InputFilter;
-use Zend\InputFilter\InputFilterAwareInterface;
-use Zend\InputFilter\InputFilterInterface;
-use Zend\InputFilter\InputFilterProviderInterface;
+use Laminas\InputFilter\InputFilter;
+use Laminas\InputFilter\InputFilterAwareInterface;
+use Laminas\InputFilter\InputFilterInterface;
+use Laminas\InputFilter\InputFilterProviderInterface;
 
 class ExpenseValidator extends InputFilter
 {

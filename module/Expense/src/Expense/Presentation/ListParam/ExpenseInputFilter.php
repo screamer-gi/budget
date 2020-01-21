@@ -1,7 +1,7 @@
 <?php
 namespace Expense\Presentation\ListParam;
 
-use Zend\InputFilter\InputFilter;
+use Laminas\InputFilter\InputFilter;
 
 class ExpenseInputFilter extends InputFilter
 {

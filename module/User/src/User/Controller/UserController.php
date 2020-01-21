@@ -6,12 +6,12 @@ use DoctrineModule\Authentication\Adapter\ObjectRepository;
 use FileStore\Service\FileService;
 use Lib\Auth\Service\AuthInterface;
 use User\Service\UserService;
-use Zend\Authentication\AuthenticationService;
-use Zend\Authentication\Result as Result;
-use Zend\Http\Headers;
-use Zend\Http\Response\Stream;
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\JsonModel;
+use Laminas\Authentication\AuthenticationService;
+use Laminas\Authentication\Result as Result;
+use Laminas\Http\Headers;
+use Laminas\Http\Response\Stream;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\View\Model\JsonModel;
 
 class UserController extends AbstractActionController
 {

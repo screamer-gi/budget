@@ -2,7 +2,7 @@
 
 namespace Application\Controller;
 
-use Zend\Mvc\Controller\ControllerManager;
+use Laminas\Mvc\Controller\ControllerManager;
 
 class Factory
 {

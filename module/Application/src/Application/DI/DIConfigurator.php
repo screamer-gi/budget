@@ -2,12 +2,12 @@
 namespace Application\DI;
 
 use Common\Exceptions\ArgumentInvalidException;
-use Zend\Di\Di;
-use Zend\ServiceManager\ServiceManager;
-use Zend\Di\ServiceLocator\Generator;
-use Zend\Di\Definition\CompilerDefinition;
-use Zend\Di\DefinitionList;
-use Zend\Di\Definition;
+use Laminas\Di\Di;
+use Laminas\ServiceManager\ServiceManager;
+use Laminas\Di\ServiceLocator\Generator;
+use Laminas\Di\Definition\CompilerDefinition;
+use Laminas\Di\DefinitionList;
+use Laminas\Di\Definition;
 use Application\Context;
 
 class DIConfigurator
@@ -19,13 +19,13 @@ class DIConfigurator
     private $dependenciesDummies =
         [ 'Doctrine\ORM\EntityManager'                     => []
         , 'Doctrine\Common\Persistence\ObjectManager'      => []
-        , 'Zend\EventManager\EventManagerInterface'        => []
-        , 'Zend\ServiceManager\ServiceLocatorInterface'    => []
-        , 'Zend\Di\ServiceLocatorInterface'                => []
-        , 'Zend\InputFilter\InputFilterInterface'          => []
-        , 'Zend\Form'                                      => []
-        , 'Zend\Form\Factory'                              => []
-        , 'Zend\Form\FormInterface'                        => []
+        , 'Laminas\EventManager\EventManagerInterface'        => []
+        , 'Laminas\ServiceManager\ServiceLocatorInterface'    => []
+        , 'Laminas\Di\ServiceLocatorInterface'                => []
+        , 'Laminas\InputFilter\InputFilterInterface'          => []
+        , 'Laminas\Form'                                      => []
+        , 'Laminas\Form\Factory'                              => []
+        , 'Laminas\Form\FormInterface'                        => []
         , 'DateTime'                                       => []
         , 'Application\Filters\Set\CommonFactoryInterface' => []
         , 'Application\DateService'                        => []
@@ -57,9 +57,9 @@ class DIConfigurator
         $context = new Context();
         $context->set('Doctrine\ORM\EntityManager'                  , $this->serviceManager->get('Doctrine\ORM\EntityManager'));
         $context->set('Doctrine\Common\Persistence\ObjectManager'   , $this->serviceManager->get('Doctrine\ORM\EntityManager'));
-        $context->set('Zend\EventManager\EventManagerInterface'     , $this->serviceManager->get('Zend\EventManager\EventManagerInterface'));
-        $context->set('Zend\ServiceManager\ServiceLocatorInterface' , $this->serviceManager->get('Zend\ServiceManager\ServiceLocatorInterface'));
-        $context->set('Zend\Di\ServiceLocatorInterface'             , $context);
+        $context->set('Laminas\EventManager\EventManagerInterface'     , $this->serviceManager->get('Laminas\EventManager\EventManagerInterface'));
+        $context->set('Laminas\ServiceManager\ServiceLocatorInterface' , $this->serviceManager->get('Laminas\ServiceManager\ServiceLocatorInterface'));
+        $context->set('Laminas\Di\ServiceLocatorInterface'             , $context);
 
         return $context;
     }

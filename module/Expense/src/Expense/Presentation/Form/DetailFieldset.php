@@ -6,8 +6,8 @@ use DoctrineModule\Persistence\ObjectManagerAwareInterface;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use Expense\Persistence\Entity\Category;
 use Expense\Persistence\Entity\Detail;
-use Zend\Form\Fieldset;
-use Zend\InputFilter\InputFilterProviderInterface;
+use Laminas\Form\Fieldset;
+use Laminas\InputFilter\InputFilterProviderInterface;
 
 class DetailFieldset extends Fieldset implements InputFilterProviderInterface, ObjectManagerAwareInterface {
     protected $objectManager;
@@ -51,7 +51,7 @@ class DetailFieldset extends Fieldset implements InputFilterProviderInterface, O
 
     /**
      * Should return an array specification compatible with
-     * {@link Zend\InputFilter\Factory::createInputFilter()}.
+     * {@link Laminas\InputFilter\Factory::createInputFilter()}.
      *
      * @return array
      */
