@@ -1,14 +1,18 @@
 <?php
+
+use Application\Controller\IndexController;
+use Laminas\Router\Http\Literal;
+use Laminas\ServiceManager\Factory\InvokableFactory;
+
 return array(
     'router' => array(
         'routes' => array(
             'home' => array(
-                'type' => 'Laminas\Mvc\Router\Http\Literal',
+                'type' => Literal::class,
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        //'controller' => 'User\Controller\User',
-                        'controller' => 'Application\Controller\Index',
+                        'controller' => IndexController::class,
                         'action'     => 'index',
                     ),
                 ),
@@ -43,25 +47,25 @@ return array(
             ),
         ),
     ),
-    'service_manager' => array(
-        'factories' => array(
-            'translator' => 'Laminas\I18n\Translator\TranslatorServiceFactory',
-        ),
-    ),
-    'translator' => array(
-        'locale' => 'en_US',
-        'translation_patterns' => array(
-            array(
-                'type'     => 'gettext',
-                'base_dir' => __DIR__ . '/../language',
-                'pattern'  => '%s.mo',
-            ),
-        ),
-    ),
+//    'service_manager' => array(
+//        'factories' => array(
+//            'translator' => 'Laminas\I18n\Translator\TranslatorServiceFactory',
+//        ),
+//    ),
+//    'translator' => array(
+//        'locale' => 'en_US',
+//        'translation_patterns' => array(
+//            array(
+//                'type'     => 'gettext',
+//                'base_dir' => __DIR__ . '/../language',
+//                'pattern'  => '%s.mo',
+//            ),
+//        ),
+//    ),
     'controllers' => array(
-        'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
-        ),
+        'factories' => [
+            IndexController::class => InvokableFactory::class,
+        ],
     ),
     'view_manager' => array(
         'display_not_found_reason' => true,

@@ -1,6 +1,7 @@
 <?php
 return array(
     'modules' => array(
+        'Laminas\Router',
 //        'DoctrineModule',
 //        'DoctrineORMModule',
         'Application',

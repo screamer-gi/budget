@@ -8,5 +8,15 @@
         "php": "^7.2",
         "lstrojny/functional-php": "@stable",
         "laminas/laminas-mvc": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Application\\": "module/Application/src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ApplicationTest\\": "module/Application/test/"
+        }
     }
 }
