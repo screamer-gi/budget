@@ -5,17 +5,8 @@
         "budget"
     ],
     "require": {
-        "php": ">=5.5",
-        "zendframework/zendframework": "*",
-        "doctrine/doctrine-module": "*",
-        "doctrine/doctrine-orm-module": "*",
-        "doctrine/orm": "2.4.*",
-        "phpunit/phpunit": "3.7.*",
-        "phake/phake": "@stable",
+        "php": "^7.2",
         "lstrojny/functional-php": "@stable",
-        "symfony/yaml": "~2.0",
-        "symfony/console": "*",
-        "aimfeld/zend-di-compiler": "1.*",
-        "laminas/laminas-dependency-plugin": "^1.0"
+        "laminas/laminas-mvc": "^3.1"
     }
 }
