@@ -1,4 +1,0 @@
-<?php
-namespace Common;
-
-return [];
