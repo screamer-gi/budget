@@ -1,15 +1,15 @@
 <?php
 return array(
     'modules' => array(
-        'DoctrineModule',
-        'DoctrineORMModule',
+//        'DoctrineModule',
+//        'DoctrineORMModule',
         'Application',
         //'Administration',
         //'User',
         //'Auth',
-        'Common',
-        'Expense',
-    ) + ['ZendDiCompiler'],
+//        'Common',
+//        'Expense',
+    )/* + ['ZendDiCompiler']*/,
 
     'module_listener_options' => array(
         'config_glob_paths'    => array(
