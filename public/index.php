@@ -1,10 +1,15 @@
 <?php
-/**
- * This makes our life easier when dealing with paths. Everything is relative
- * to the application root now.
- */
+
+use Laminas\Mvc\Application;
+use Laminas\Stdlib\ArrayUtils;
+
 chdir(dirname(__DIR__));
 
-include 'init_autoloader.php';
+include __DIR__ . '/../vendor/autoload.php';
 
-Laminas\Mvc\Application::init(include 'config/application.config.php')->run();
+$appConfig = require __DIR__ . '/../config/application.config.php';
+if (file_exists(__DIR__ . '/../config/development.config.php')) {
+    $appConfig = ArrayUtils::merge($appConfig, require __DIR__ . '/../config/development.config.php');
+}
+
+Application::init($appConfig)->run();
