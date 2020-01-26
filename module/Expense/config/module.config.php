@@ -2,12 +2,12 @@
 namespace Expense;
 
 use Expense\Presentation\Controller\ExpenseController;
-use Laminas\ServiceManager\Factory\InvokableFactory;
+use Laminas\Di\Container\AutowireFactory;
 
 return [
     'controllers' => [
         'factories' => [
-            ExpenseController::class => InvokableFactory::class,
+            ExpenseController::class => AutowireFactory::class,
         ],
     ],
 
