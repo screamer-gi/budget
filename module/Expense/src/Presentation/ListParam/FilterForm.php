@@ -33,7 +33,6 @@ class FilterForm extends Form {
             ],
         ]);
         $this->get('month')->setValue(date('n'));
-        //$this->get('month')->setValue('2');
 
         $years = range(2014, date('Y'));
         $this->add([
@@ -55,5 +54,4 @@ class FilterForm extends Form {
             ],
         ]);
     }
-
-} 
+}

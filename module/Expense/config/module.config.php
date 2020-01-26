@@ -21,10 +21,7 @@ return [
     'controllers' => [
         'factories' => [
             ExpenseController::class => InvokableFactory::class,
-            /*'Expense\Controller\ExpenseCategory' => function($cm) {
-                return (new Factory())->get('Expense\Controller\ExpenseCategoryController', $cm);
-            },*/
-        ]
+        ],
     ],
 
     'router' => [
@@ -43,19 +40,6 @@ return [
                     ],
                 ],
             ],
-            /*'expense-category' => [
-                'type'    => 'segment',
-                'options' => [
-                    'route'       => '/expense-category[/:action]',
-                    'constraints' => [
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                    ],
-                    'defaults' => [
-                        'controller' => 'Expense\Controller\ExpenseCategory',
-                        'action'     => 'index',
-                    ],
-                ],
-            ],*/
         ],
     ],
 
