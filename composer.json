@@ -6,6 +6,9 @@
     ],
     "require": {
         "php": "^7.2",
+        "doctrine/doctrine-module": "^3.0",
+        "doctrine/doctrine-orm-module": "dev-feature/laminas-convert2",
+        "doctrine/orm": "^2.7",
         "laminas/laminas-di": "^3.1",
         "laminas/laminas-form": "^2.14",
         "laminas/laminas-mvc": "^3.1",

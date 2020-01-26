@@ -1,10 +1,11 @@
 <?php
 return array(
     'modules' => array(
+        'Laminas\Cache',
         'Laminas\Di',
         'Laminas\Router',
-//        'DoctrineModule',
-//        'DoctrineORMModule',
+        'DoctrineModule',
+        'DoctrineORMModule',
         'Application',
         //'Administration',
         //'User',
