@@ -11,6 +11,15 @@
         "laminas/laminas-mvc": "^3.1",
         "lstrojny/functional-php": "@stable"
     },
+    "require-dev": {
+        "laminas/laminas-component-installer": "^2.1"
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/screamer-gi/DoctrineORMModule.git"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Application\\": "module/Application/src/",
@@ -22,8 +31,5 @@
         "psr-4": {
             "ApplicationTest\\": "module/Application/test/"
         }
-    },
-    "require-dev": {
-        "laminas/laminas-component-installer": "^2.1"
     }
 }
