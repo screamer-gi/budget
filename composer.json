@@ -12,7 +12,8 @@
     "autoload": {
         "psr-4": {
             "Application\\": "module/Application/src/",
-            "Common\\": "module/Common/src/"
+            "Common\\": "module/Common/src/",
+            "Expense\\": "module/Expense/src/"
         }
     },
     "autoload-dev": {

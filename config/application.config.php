@@ -9,7 +9,7 @@ return array(
         //'User',
         //'Auth',
 //        'Common',
-//        'Expense',
+        'Expense',
     )/* + ['ZendDiCompiler']*/,
 
     'module_listener_options' => array(

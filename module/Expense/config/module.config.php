@@ -2,7 +2,7 @@
 namespace Expense;
 
 use Expense\Presentation\Controller\ExpenseController;
-use Laminas\Mvc\Controller\ControllerManager;
+use Laminas\ServiceManager\Factory\InvokableFactory;
 
 return [
     'zendDiCompiler' => [
@@ -20,9 +20,7 @@ return [
 
     'controllers' => [
         'factories' => [
-            'Expense\Controller\Expense' => function(ControllerManager $cm) {
-                return $cm->getServiceLocator()->/*get('diService')->*/get(ExpenseController::class);
-            },
+            ExpenseController::class => InvokableFactory::class,
             /*'Expense\Controller\ExpenseCategory' => function($cm) {
                 return (new Factory())->get('Expense\Controller\ExpenseCategoryController', $cm);
             },*/
@@ -40,7 +38,7 @@ return [
                         'id'     => '[0-9]+',
                     ],
                     'defaults' => [
-                        'controller' => 'Expense\Controller\Expense',
+                        'controller' => ExpenseController::class,
                         'action'     => 'index',
                     ],
                 ],
