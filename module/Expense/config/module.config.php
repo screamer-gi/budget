@@ -5,19 +5,6 @@ use Expense\Presentation\Controller\ExpenseController;
 use Laminas\ServiceManager\Factory\InvokableFactory;
 
 return [
-    'zendDiCompiler' => [
-        'scanDirectories' => [
-            __DIR__ . '/../src/' . __NAMESPACE__,
-        ],
-    ],
-    'di' => [
-        'instance' => [
-            'preference' => [
-                //\Doctrine\Common\Persistence\ObjectManager::class => \Doctrine\ORM\EntityManager::class
-            ],
-        ],
-    ],
-
     'controllers' => [
         'factories' => [
             ExpenseController::class => InvokableFactory::class,

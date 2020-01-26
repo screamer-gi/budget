@@ -6,8 +6,10 @@
     ],
     "require": {
         "php": "^7.2",
-        "lstrojny/functional-php": "@stable",
-        "laminas/laminas-mvc": "^3.1"
+        "laminas/laminas-di": "^3.1",
+        "laminas/laminas-form": "^2.14",
+        "laminas/laminas-mvc": "^3.1",
+        "lstrojny/functional-php": "@stable"
     },
     "autoload": {
         "psr-4": {
@@ -20,5 +22,8 @@
         "psr-4": {
             "ApplicationTest\\": "module/Application/test/"
         }
+    },
+    "require-dev": {
+        "laminas/laminas-component-installer": "^2.1"
     }
 }

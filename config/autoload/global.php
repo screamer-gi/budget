@@ -42,10 +42,7 @@ return [
             ];
         })
     ]
-,   'zendDiCompiler' => [
-        'writePath' => __DIR__ . '../../data/di'
-    ]
-,   'di' => [
+,   '_di' => [
         'instance' => [
             'preference' => [
                 \Doctrine\Common\Persistence\ObjectManager::class => \Doctrine\ORM\EntityManager::class,
