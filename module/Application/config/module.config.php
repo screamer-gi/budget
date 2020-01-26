@@ -1,6 +1,7 @@
 <?php
 
 use Application\Controller\IndexController;
+use Application\DummyTranslator;
 use Laminas\Router\Http\Literal;
 use Laminas\ServiceManager\Factory\InvokableFactory;
 
@@ -85,4 +86,12 @@ return array(
             'ViewJsonStrategy',
         ),
     ),
+    'view_helpers' => [
+        'aliases' => [
+            'translate' => DummyTranslator::class,
+        ],
+        'factories' => [
+            DummyTranslator::class => InvokableFactory::class,
+        ],
+    ],
 );
