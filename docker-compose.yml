@@ -17,6 +17,7 @@ services:
     links:
       - db
       - db-test
+      - phpmyadmin
 
   db:
     container_name: budget-db
