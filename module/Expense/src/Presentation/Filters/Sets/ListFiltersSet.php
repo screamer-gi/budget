@@ -12,7 +12,7 @@ class ListFiltersSet extends AbstractFilterSet
     {
         // todo FilterMonthYear
         return [
-            [['dateStart', 'dateEnd'] , new FilterDateInterval(Expense::class, 'date', 'dateStart', 'dateEnd', false)]
+            [['dateStart', 'dateEnd'], new FilterDateInterval($this->repository->getModelAlias() ?? Expense::class, 'date', 'dateStart', 'dateEnd', false)]
         ];
     }
 }

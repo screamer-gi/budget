@@ -2,6 +2,7 @@
 
 namespace Application\Filters;
 
+use Common\Persistence\Repository\AbstractRepository;
 use Doctrine\ORM\QueryBuilder;
 use Common\Persistence\Filter\FilterInterface;
 
@@ -10,11 +11,16 @@ abstract class AbstractFilterSet implements FiltersSetInterface
     private $startParam = '';
     private $limitParam = '';
 
+    /** @var array */
     protected $outerParams;
 
-    public function __construct(array $outerParams = [])
+    /** @var AbstractRepository */
+    protected $repository;
+
+    public function __construct(array $outerParams = [], AbstractRepository $repository = null)
     {
         $this->outerParams = $outerParams;
+        $this->repository = $repository;
     }
 
     public function applyFilters(QueryBuilder $queryBuilder)

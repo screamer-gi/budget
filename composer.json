@@ -11,6 +11,7 @@
         "doctrine/orm": "^2.7",
         "laminas/laminas-di": "^3.1",
         "laminas/laminas-form": "^2.14",
+        "laminas/laminas-i18n": "^2.10",
         "laminas/laminas-mvc": "^3.1",
         "lstrojny/functional-php": "@stable"
     },

@@ -9,12 +9,12 @@ class ExpenseRepository extends AbstractRepository
 {
     public function getDetailedList(FiltersSetInterface $filtersSet = null)
     {
-        $m        = $this->getModelName();
+        $model = $this->getModelName();
+        $alias = $this->getModelAlias();
 
         $qb = $this->entityManager->createQueryBuilder();
-
-        $qb ->select([$m])
-            ->from($m, $m);
+        $qb ->select([$alias])
+            ->from($model, $alias);
 
         if ($filtersSet) {
             $filtersSet->applyFilters($qb);

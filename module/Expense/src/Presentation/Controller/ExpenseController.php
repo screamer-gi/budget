@@ -1,67 +1,62 @@
 <?php
 namespace Expense\Presentation\Controller;
 
-use Application\Controller\IndexController;
-use Common\Presentation\Zend\Controller\ActionMaker;
 use Doctrine\ORM\EntityManager;
-use Expense\Persistence\Entity\Detail;
 use Expense\Persistence\Entity\Expense;
 use Expense\Persistence\Repository\ExpenseCategoryRepository;
-use Expense\Persistence\Repository\ExpenseRepository;
-use Expense\Persistence\Repository\PlaceRepository;
 use Expense\Presentation\Filters\Sets\FiltersFactory;
-use Expense\Presentation\Form\ExpenseForm;
 use Expense\Presentation\ListParam\ExpenseOutputFilter;
 use Expense\Presentation\ListParam\FilterForm;
 use Expense\Service\ExpenseService;
 use Functional as F;
-use Zend\Debug\Debug;
+use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
 
-class ExpenseController extends IndexController//CrudActionController
+class ExpenseController extends AbstractActionController
 {
+    /** @var ExpenseService */
     private $expenseService;
-    private $paramsFactory;
-    private $actionMaker;
-    private $repo;
-    private $placeRepo;
+
+    /** @var ExpenseCategoryRepository */
     private $categoryRepo;
+
+    /** @var EntityManager */
     private $em;
+
+    /** @var FiltersFactory */
     private $filterFactory;
+
+    /** @var ExpenseOutputFilter */
     private $outFilter;
+
+    /** @var FilterForm */
     private $filterForm;
+
     private $form;
 
     public function __construct(
-        ExpenseService            $service
-    ,   ActionMaker               $actionMaker
-    ,   ExpenseRepository         $repo
-    ,   PlaceRepository           $placeRepository
-    ,   ExpenseCategoryRepository $categoryRepository
-    ,   EntityManager             $em
-    ,   FiltersFactory            $filterFactory
-    ,   ExpenseOutputFilter       $outFilter
-    ,   FilterForm                $filterForm
-    ,   ExpenseForm               $form
+        ExpenseService $service,
+        ExpenseCategoryRepository $categoryRepository,
+        EntityManager $em,
+        FiltersFactory $filterFactory,
+        ExpenseOutputFilter $outFilter,
+        FilterForm $filterForm
     ) {
-        $this->expenseService  = $service;
-        $this->actionMaker     = $actionMaker;
-        $this->repo            = $repo;
-        $this->placeRepo       = $placeRepository;
-        $this->categoryRepo    = $categoryRepository;
-        $this->em              = $em;
-        $this->filterFactory   = $filterFactory;
-        $this->outFilter       = $outFilter;
-        $this->filterForm      = $filterForm;
-        $this->form            = $form;
-
-        /*parent::__construct(
-           'expense'
-        );*/
+        $this->expenseService = $service;
+        $this->categoryRepo = $categoryRepository;
+        $this->em = $em;
+        $this->filterFactory = $filterFactory;
+        $this->outFilter = $outFilter;
+        $this->filterForm = $filterForm;
     }
 
     public function indexAction()
     {
+        $filterForm = $this->filterForm;
+        $filterForm->setData($this->params()->fromQuery());
+        $m = $filterForm->get('month')->getValue();
+        $y = $filterForm->get('year')->getValue();
+
         $table = [];
         $categories = $this->categoryRepo->findAll();
         $categoryIds = F\pluck($categories, 'id');
@@ -69,11 +64,6 @@ class ExpenseController extends IndexController//CrudActionController
         $categorySummary = array_fill_keys($categoryIds, 0.0);
         $count = 0;
         $summary = 0.0;
-
-        $filterForm = $this->filterForm;
-        $filterForm->setData($this->params()->fromQuery());
-        $m = $filterForm->get('month')->getValue();
-        $y = $filterForm->get('year')->getValue();
 
         $lastDay = date('t', strtotime("$y-$m-01"));
         for ($i = 1; $i <= $lastDay; $i++) {
@@ -93,15 +83,16 @@ class ExpenseController extends IndexController//CrudActionController
             $summary += $r->amount;
             $count++;
         }
-        return new ViewModel([
-            'table'           => $table
-        ,   'categories'      => $categories
-        ,   'categorySummary' => $categorySummary
-        ,   'summary'         => $summary
-        ,   'count'           => $count
-        ,   'filters'         => $filterForm
-        ,   'weekdays'        => ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
-        ]);
+
+        return (new ViewModel([
+            'table'           => $table,
+            'categories'      => $categories,
+            'categorySummary' => $categorySummary,
+            'summary'         => $summary,
+            'count'           => $count,
+            'filters'         => $filterForm,
+            'weekdays'        => ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+        ]))->setTemplate('expense/index');
     }
 
     public function addAction()

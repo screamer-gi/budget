@@ -252,13 +252,17 @@ abstract class AbstractRepository extends EntityRepository
      */
     protected function getQueryBuilder($alias = null)
     {
-        $modelName = $this->getModelName();
-        return $this->createQueryBuilder($alias ?: $modelName);
+        return $this->createQueryBuilder($alias ?: $this->getModelAlias());
     }
 
     public function getRepository()
     {
         return $this;
+    }
+
+    public function getModelAlias(): string
+    {
+        return str_replace('\\', '_', $this->getModelName());
     }
 
     public abstract function getModelName();

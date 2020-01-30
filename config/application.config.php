@@ -1,8 +1,10 @@
 <?php
 return array(
     'modules' => array(
+        'Laminas\I18n',
         'Laminas\Cache',
         'Laminas\Di',
+        'Laminas\Form',
         'Laminas\Router',
         'DoctrineModule',
         'DoctrineORMModule',
