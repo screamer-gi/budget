@@ -3,6 +3,10 @@
 use Functional as F;
 
 return [
+    'invokables' => [
+        'Doctrine\ORM\Mapping\UnderscoreNamingStrategy' => 'Doctrine\ORM\Mapping\UnderscoreNamingStrategy',
+        'Doctrine\ORM\Mapping\AnsiQuoteStrategy' => 'Doctrine\ORM\Mapping\AnsiQuoteStrategy',
+    ],
     'doctrine' => [
         'connection' => [
             'orm_default' => [
@@ -15,7 +19,13 @@ return [
                     ]
             ]
         ],
-        'configuration' => ['orm_default' => ['generate_proxies' => false]],
+        'configuration' => [
+            'orm_default' => [
+                'generate_proxies' => false,
+//                'quote_strategy' => Doctrine\ORM\Mapping\DefaultQuoteStrategy::class,
+//                'naming_strategy' => 'Doctrine\ORM\Mapping\UnderscoreNamingStrategy',
+            ],
+        ],
         'driver'        => call_user_func(function () {
             $driverName = 'LibDriver';
             $libModules = [];
