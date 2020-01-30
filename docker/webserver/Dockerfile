@@ -3,10 +3,10 @@ FROM composer AS composer
 FROM php:7.4-apache
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends libzip-dev zip unzip git
+    && apt-get install -y --no-install-recommends libicu-dev libzip-dev zip unzip git
 
 RUN pecl install xdebug && \
-    docker-php-ext-install pdo_mysql zip && \
+    docker-php-ext-install pdo_mysql zip intl && \
     docker-php-ext-enable xdebug
 
 COPY ./php.ini /usr/local/etc/php/
