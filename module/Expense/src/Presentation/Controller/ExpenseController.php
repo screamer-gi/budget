@@ -1,16 +1,17 @@
 <?php
 namespace Expense\Presentation\Controller;
 
+use DateTime;
 use Doctrine\ORM\EntityManager;
 use Expense\Persistence\Entity\Expense;
 use Expense\Persistence\Repository\ExpenseCategoryRepository;
 use Expense\Presentation\Filters\Sets\FiltersFactory;
+use Expense\Presentation\Form\ExpenseForm;
 use Expense\Presentation\ListParam\ExpenseOutputFilter;
 use Expense\Presentation\ListParam\FilterForm;
 use Expense\Service\ExpenseService;
 use Functional as F;
 use Laminas\Mvc\Controller\AbstractActionController;
-use Laminas\View\Model\ViewModel;
 
 class ExpenseController extends AbstractActionController
 {
@@ -32,6 +33,7 @@ class ExpenseController extends AbstractActionController
     /** @var FilterForm */
     private $filterForm;
 
+    /** @var ExpenseForm */
     private $form;
 
     public function __construct(
@@ -40,7 +42,8 @@ class ExpenseController extends AbstractActionController
         EntityManager $em,
         FiltersFactory $filterFactory,
         ExpenseOutputFilter $outFilter,
-        FilterForm $filterForm
+        FilterForm $filterForm,
+        ExpenseForm $form
     ) {
         $this->expenseService = $service;
         $this->categoryRepo = $categoryRepository;
@@ -48,6 +51,7 @@ class ExpenseController extends AbstractActionController
         $this->filterFactory = $filterFactory;
         $this->outFilter = $outFilter;
         $this->filterForm = $filterForm;
+        $this->form = $form;
     }
 
     public function indexAction()
@@ -84,22 +88,22 @@ class ExpenseController extends AbstractActionController
             $count++;
         }
 
-        return (new ViewModel([
-            'table'           => $table,
-            'categories'      => $categories,
+        return [
+            'table' => $table,
+            'categories' => $categories,
             'categorySummary' => $categorySummary,
-            'summary'         => $summary,
-            'count'           => $count,
-            'filters'         => $filterForm,
-            'weekdays'        => ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
-        ]))->setTemplate('expense/index');
+            'summary' => $summary,
+            'count' => $count,
+            'filters' => $filterForm,
+            'weekdays' => ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+        ];
     }
 
     public function addAction()
     {
         $expense = $this->categoryRepo->hydrateExpense(new Expense());
         $date = $this->params()->fromQuery('date');
-        $expense->date = \DateTime::createFromFormat('d.m.Y', $date);
+        $expense->date = DateTime::createFromFormat('d.m.Y', $date);
 
         $form = $this->form;
         $form->get('submit')->setValue('Add');
@@ -109,7 +113,7 @@ class ExpenseController extends AbstractActionController
             $form->setData($this->getRequest()->getPost());
             if ($form->isValid()) {
                 $this->expenseService->create($expense, $form->getInputFilter()->getValues());
-                $this->em->flush();///////////////////////////////
+                $this->em->flush();
                 return $this->redirect()->toRoute('expense', [], ['query' => ['month' => $expense->date->format('m'), 'year' => $expense->date->format('Y')]]);
             }
             //else {Debug::dump( $form->getMessages()); Debug::dump($form->getData());die('false');}

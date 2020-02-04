@@ -2,21 +2,18 @@
 namespace Expense\Presentation\Form;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use DoctrineModule\Persistence\ObjectManagerAwareInterface;
-use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
+use Doctrine\Laminas\Hydrator\DoctrineObject;
 use Expense\Persistence\Entity\Category;
 use Expense\Persistence\Entity\Detail;
 use Laminas\Form\Fieldset;
 use Laminas\InputFilter\InputFilterProviderInterface;
 
-class DetailFieldset extends Fieldset implements InputFilterProviderInterface, ObjectManagerAwareInterface {
-    protected $objectManager;
-
-    function __construct(ObjectManager $objectManager)
+class DetailFieldset extends Fieldset implements InputFilterProviderInterface
+{
+    function __construct(ObjectManager $objectManager, DoctrineObject $hydrator)
     {
         parent::__construct('detail');
-        $this->setObjectManager($objectManager)
-             ->setHydrator(new DoctrineHydrator($objectManager, false));
+        $this->setHydrator($hydrator);
         $this->setObject(new Detail());
         $this->setLabel('Detail');
 
@@ -30,7 +27,7 @@ class DetailFieldset extends Fieldset implements InputFilterProviderInterface, O
             'type' => 'DoctrineModule\Form\Element\ObjectSelect',
             'options' => [
                 'label' => 'Category',
-                'object_manager'     => $this->getObjectManager(),
+                'object_manager'     => $objectManager,
                 'target_class'       => Category::class,
                 'property'           => 'title',
                 'display_empty_item' => true,
@@ -49,17 +46,11 @@ class DetailFieldset extends Fieldset implements InputFilterProviderInterface, O
         ]);
     }
 
-    /**
-     * Should return an array specification compatible with
-     * {@link Laminas\InputFilter\Factory::createInputFilter()}.
-     *
-     * @return array
-     */
     public function getInputFilterSpecification()
     {
         return [
             'id' => [
-                'required' => false
+                'required' => false,
             ],
             'category' => [
                 'required' => true,
@@ -67,20 +58,9 @@ class DetailFieldset extends Fieldset implements InputFilterProviderInterface, O
             'formula' => [
                 'required' => false,
                 'filters' => [
-                    ['name' => 'StringTrim']
-                ]
-            ]
+                    ['name' => 'StringTrim'],
+                ],
+            ],
         ];
-    }
-
-    public function setObjectManager(ObjectManager $objectManager)
-    {
-        $this->objectManager = $objectManager;
-        return $this;
-    }
-
-    public function getObjectManager()
-    {
-        return $this->objectManager;
     }
 }

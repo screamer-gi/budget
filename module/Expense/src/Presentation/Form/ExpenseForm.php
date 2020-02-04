@@ -2,27 +2,25 @@
 namespace Expense\Presentation\Form;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use DoctrineModule\Persistence\ObjectManagerAwareInterface;
-use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
+use Doctrine\Laminas\Hydrator\DoctrineObject as DoctrineHydrator;
 use Expense\Persistence\Entity\Category;
-use Expense\Persistence\Entity\Expense;
 use Expense\Persistence\Entity\Place;
-use Laminas\Form\Element;
 use Laminas\Form\Form;
 
-class ExpenseForm extends Form implements ObjectManagerAwareInterface
+class ExpenseForm extends Form
 {
     protected $objectManager;
 
     public function __construct(
-        ObjectManager       $objectManager
-    ,   DetailFieldset      $detailFieldset
-    ,   ExpenseValidator    $expenseValidator
+        ObjectManager $objectManager,
+        DetailFieldset $detailFieldset,
+        ExpenseValidator $expenseValidator,
+        DoctrineHydrator $hydrator
     ) {
         parent::__construct('expense');
-        $this->setObjectManager($objectManager);
+        $this->objectManager = $objectManager;
         $this->setInputFilter($expenseValidator)
-             ->setHydrator(new DoctrineHydrator($objectManager, false));
+             ->setHydrator($hydrator);
 
         $this->add([
             'name' => 'id',
@@ -111,13 +109,7 @@ class ExpenseForm extends Form implements ObjectManagerAwareInterface
         ]);
     }
 
-    public function setObjectManager(ObjectManager $objectManager)
-    {
-        $this->objectManager = $objectManager;
-        return $this;
-    }
-
-    public function getObjectManager()
+    private function getObjectManager()
     {
         return $this->objectManager;
     }

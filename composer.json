@@ -6,6 +6,7 @@
     ],
     "require": {
         "php": "^7.2",
+        "doctrine/doctrine-laminas-hydrator": "^2.0",
         "doctrine/doctrine-module": "^3.0",
         "doctrine/doctrine-orm-module": "dev-feature/laminas-convert2",
         "doctrine/orm": "^2.7",

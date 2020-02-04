@@ -46,8 +46,8 @@ return [
     ],
 
     'view_manager' => [
-        'template_path_stack' => [
-            'expense' => __DIR__ . '/../view',
+        'prefix_template_path_stack' => [
+            'expense/presentation/expense' => __DIR__ . '/../view/expense/expense',
         ],
-    ]
+    ],
 ];

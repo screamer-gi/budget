@@ -2,6 +2,8 @@
 
 use Application\Controller\IndexController;
 use Application\DummyTranslator;
+use Application\Infrastructure\Doctrine\DoctrineObjectHydratorFactory;
+use Doctrine\Laminas\Hydrator\DoctrineObject;
 use Laminas\Router\Http\Literal;
 use Laminas\ServiceManager\Factory\InvokableFactory;
 
@@ -48,11 +50,18 @@ return array(
             ),
         ),
     ),
-//    'service_manager' => array(
-//        'factories' => array(
+    'service_manager' => [
+        'factories' => [
 //            'translator' => 'Laminas\I18n\Translator\TranslatorServiceFactory',
-//        ),
-//    ),
+            DoctrineObject::class => DoctrineObjectHydratorFactory::class,
+        ],
+        'aliases' => [
+            Doctrine\Common\Persistence\ObjectManager::class => Doctrine\ORM\EntityManager::class,
+        ],
+        'shared' => [
+            DoctrineObject::class => false,
+        ],
+    ],
 //    'translator' => array(
 //        'locale' => 'en_US',
 //        'translation_patterns' => array(
