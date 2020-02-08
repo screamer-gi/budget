@@ -11,7 +11,7 @@ services:
 #    tty: true
     ports:
       - '80:80'
-      - '9000:9000'
+      - '9001:9000'
     volumes:
       - '.:/var/www/budget'
     links:
@@ -50,9 +50,10 @@ services:
     image: phpmyadmin/phpmyadmin
     container_name: budget-pma
     environment:
-      - PMA_ARBITRARY=1
+      - PMA_ARBITRARY=0
     restart: always
     ports:
       - '8080:80'
     volumes:
+      - ./docker/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
       - /sessions
