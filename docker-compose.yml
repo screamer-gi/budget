@@ -53,7 +53,7 @@ services:
       - PMA_ARBITRARY=0
     restart: always
     ports:
-      - '8080:80'
+      - '80'
     volumes:
       - ./docker/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
       - /sessions
