@@ -30,6 +30,15 @@ return [
         ],
     ],
 
+    'navigation' => [
+        'default' => [
+            [
+                'label' => 'Анализ',
+                'route' => 'expense',
+            ],
+        ],
+    ],
+
     'doctrine' => [
         'driver' => [
             __NAMESPACE__ . '_driver' => [

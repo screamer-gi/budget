@@ -50,6 +50,16 @@ return array(
             ),
         ),
     ),
+
+    'navigation' => [
+        'default' => [
+            [
+                'label' => 'Бюджет',
+                'route' => 'home',
+            ],
+        ],
+    ],
+
     'service_manager' => [
         'factories' => [
 //            'translator' => 'Laminas\I18n\Translator\TranslatorServiceFactory',

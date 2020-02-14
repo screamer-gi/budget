@@ -1,6 +1,7 @@
 <?php
 return [
     'modules' => [
+        'Laminas\Navigation',
         'Laminas\I18n',
         'Laminas\Cache',
         'Laminas\Di',

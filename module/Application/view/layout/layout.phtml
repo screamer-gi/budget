@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var Laminas\View\Renderer\PhpRenderer $this
+ */
+?>
 <?php echo $this->doctype(); ?>
 
 <html lang="en">
@@ -24,9 +29,13 @@
 
   <body>
       <div id='content'>
-          <div id='main-menu'></div>
-          <div id="container" class="container">
-              <?php echo $this->content; ?>
+          <nav id='main-menu' class="navbar navbar-default">
+              <ul class="navbar-nav">
+                  <?= $this->navigation('default')->menu()->setUlClass('nav navbar-nav') ?>
+              </ul>
+          </nav>
+          <div id="container" class="container-fluid">
+              <?= $this->content; ?>
           </div>
       </div>
   </body>
