@@ -1,6 +1,6 @@
 <?php
-return array(
-    'modules' => array(
+return [
+    'modules' => [
         'Laminas\I18n',
         'Laminas\Cache',
         'Laminas\Di',
@@ -9,20 +9,16 @@ return array(
         'DoctrineModule',
         'DoctrineORMModule',
         'Application',
-        //'Administration',
-        //'User',
-        //'Auth',
-//        'Common',
         'Expense',
-    )/* + ['ZendDiCompiler']*/,
+    ],
 
-    'module_listener_options' => array(
-        'config_glob_paths'    => array(
+    'module_listener_options' => [
+        'config_glob_paths'    => [
             'config/autoload/{,*.}{global,local}.php',
-        ),
-        'module_paths' => array(
+        ],
+        'module_paths' => [
             './module',
             './vendor',
-        ),
-    ),
-);
+        ],
+    ],
+];

@@ -7,6 +7,7 @@ return [
         'Doctrine\ORM\Mapping\UnderscoreNamingStrategy' => 'Doctrine\ORM\Mapping\UnderscoreNamingStrategy',
         'Doctrine\ORM\Mapping\AnsiQuoteStrategy' => 'Doctrine\ORM\Mapping\AnsiQuoteStrategy',
     ],
+
     'doctrine' => [
         'connection' => [
             'orm_default' => [
@@ -51,12 +52,5 @@ return [
                 'orm_default' => ['drivers' => $drivers]
             ];
         })
-    ]
-,   '_di' => [
-        'instance' => [
-            'preference' => [
-                \Doctrine\Common\Persistence\ObjectManager::class => \Doctrine\ORM\EntityManager::class,
-            ]
-        ]
-    ]
+    ],
 ];
