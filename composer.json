@@ -28,6 +28,7 @@
     ],
     "autoload": {
         "psr-4": {
+            "AnnualReport\\": "module/AnnualReport/src/",
             "Application\\": "module/Application/src/",
             "Common\\": "module/Common/src/",
             "Expense\\": "module/Expense/src/"

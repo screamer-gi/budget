@@ -11,6 +11,7 @@ return [
         'DoctrineORMModule',
         'Application',
         'Expense',
+        'AnnualReport',
     ],
 
     'module_listener_options' => [
