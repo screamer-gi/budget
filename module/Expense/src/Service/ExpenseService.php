@@ -2,12 +2,11 @@
 
 namespace Expense\Service;
 
-use Expense\Persistence\Repository\ExpenseCategoryRepository;
-use Expense\Persistence\Repository\ExpenseRepository;
-use Functional as F;
 use Application\Filters\FiltersSetInterface;
 use Common\Service\CommonServiceInterface;
-use Common\Service\Parameters\ParametersInterface;
+use Expense\Persistence\Entity\Expense;
+use Expense\Persistence\Repository\ExpenseCategoryRepository;
+use Expense\Persistence\Repository\ExpenseRepository;
 
 class ExpenseService implements CommonServiceInterface
 {
@@ -25,7 +24,7 @@ class ExpenseService implements CommonServiceInterface
     /**
      * Список
      * @param \Application\Filters\FiltersSetInterface $filters
-     * @return array
+     * @return Expense[]
      */
     public function getList(FiltersSetInterface $filters)
     {

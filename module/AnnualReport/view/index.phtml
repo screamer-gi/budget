@@ -1,0 +1,67 @@
+<?php
+/**
+ * @var Laminas\View\Renderer\PhpRenderer $this
+ * @var array $result
+ * @var AnnualReport\FilterForm $filters
+ * @var array $months
+ */
+?>
+
+<style>
+    a {
+        text-decoration: none;
+    }
+    .center {
+        text-align: center;
+    }
+    .right {
+        text-align: right;
+    }
+    td {
+        padding: 2px;
+    }
+    .err {
+        color:red;
+    }
+    .date-column {
+        white-space: nowrap;
+    }
+</style>
+
+<?php
+$filters->setAttribute('action', $this->url('annual-report', array('action' => 'index'))); ////////////
+$filters->prepare();
+
+echo $this->form()->openTag($filters);
+echo $this->formCollection($filters);
+echo $this->form()->closeTag();
+?>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Месяц</th>
+        <th>Сумма</th>
+        <?php foreach ($result['categories'] as $category): ?>
+            <?php if ($category['sum'] === 0.0) continue; ?>
+            <td><?= $category['title'] ?></td>
+        <?php endforeach; ?>
+    </tr>
+    <?php foreach ($result['months'] as $month => $monthData): ?>
+        <tr>
+            <td><?= $months[$month] ?></td>
+            <td><?= $this->currencyFormat($monthData['sum'], 'UAH') ?></td>
+            <?php foreach ($monthData['categories'] as $categoryId => $categoryAmount): ?>
+                <?php if ($result['categories'][$categoryId]['sum'] === 0.0) continue; ?>
+                <td><?= $this->currencyFormat($categoryAmount, 'UAH') ?></td>
+            <?php endforeach; ?>
+        </tr>
+    <?php endforeach; ?>
+    <tr>
+        <th></th>
+        <th><?= $this->currencyFormat($result['sum'], 'UAH') ?></th>
+        <?php foreach ($result['categories'] as $category): ?>
+            <?php if ($category['sum'] === 0.0) continue; ?>
+            <th><?= $this->currencyFormat($category['sum'], 'UAH') ?></th>
+        <?php endforeach;?>
+    </tr>
+</table>

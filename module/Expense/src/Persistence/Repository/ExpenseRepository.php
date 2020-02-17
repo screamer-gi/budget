@@ -13,8 +13,9 @@ class ExpenseRepository extends AbstractRepository
         $alias = $this->getModelAlias();
 
         $qb = $this->entityManager->createQueryBuilder();
-        $qb ->select([$alias])
-            ->from($model, $alias);
+        $qb ->select([$alias, 'd'])
+            ->from($model, $alias)
+            ->join("$alias.details", 'd');
 
         if ($filtersSet) {
             $filtersSet->applyFilters($qb);
