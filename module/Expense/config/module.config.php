@@ -44,7 +44,7 @@ return [
             __NAMESPACE__ . '_driver' => [
                 'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
                 'cache' => 'array',
-                'paths' => [__DIR__ . '/../src/' . __NAMESPACE__ . '/Persistence/Entity']
+                'paths' => [__DIR__ . '/../src/Persistence/Entity']
             ],
             'orm_default' => [
                 'drivers' => [
