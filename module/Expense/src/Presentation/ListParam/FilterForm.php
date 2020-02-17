@@ -3,7 +3,8 @@ namespace Expense\Presentation\ListParam;
 
 use Laminas\Form\Form;
 
-class FilterForm extends Form {
+class FilterForm extends Form
+{
     public function __construct()
     {
         parent::__construct('expense-filter');
