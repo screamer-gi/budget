@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "87eb20e6e2987c950d49c2a52a3bad5f",
+    "content-hash": "466678a1c0d61c88fd66ca102dc3b169",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -3541,6 +3541,151 @@
                 "plugin"
             ],
             "time": "2019-12-31T16:28:51+00:00"
+        },
+        {
+            "name": "laminas/laminas-developer-tools",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laminas/laminas-developer-tools.git",
+                "reference": "f8140318bd0cd9beab9359a6fe233ad73e11d7bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laminas/laminas-developer-tools/zipball/f8140318bd0cd9beab9359a6fe233ad73e11d7bf",
+                "reference": "f8140318bd0cd9beab9359a6fe233ad73e11d7bf",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-eventmanager": "^2.6.2 || ^3.0",
+                "laminas/laminas-modulemanager": "^2.7",
+                "laminas/laminas-mvc": "^2.7 || ^3.0.1",
+                "laminas/laminas-servicemanager": "^2.7.5 || ^3.0.3",
+                "laminas/laminas-stdlib": "^2.7 || ^3.0",
+                "laminas/laminas-view": "^2.6",
+                "laminas/laminas-zendframework-bridge": "^1.0",
+                "php": "^5.6 || ^7.0",
+                "symfony/var-dumper": "^3.4.36 || ^4.4.1 || ^5.0.1"
+            },
+            "replace": {
+                "zendframework/zend-developer-tools": "self.version"
+            },
+            "require-dev": {
+                "laminas/laminas-coding-standard": "~1.0.0",
+                "phpunit/phpunit": "^5.7.25 || ^6.4.4 || ^7.1"
+            },
+            "suggest": {
+                "aist/aist-git-tools": "Show you information about current GIT repository",
+                "bjyoungblood/bjy-profiler": "Version: dev-master, allows the usage of the (Laminas) Db collector.",
+                "doctrine/doctrine-orm-module": "Profile DoctrineORM queries",
+                "jhuet/zdt-logger-module": "Show you log data from Laminas\\Log",
+                "ocramius/ocra-service-manager": "OcraServiceManager can help you track dependencies within your application.",
+                "san/san-session-toolbar": "SanSessionToolbar can help you see current Laminas\\Session data you're using within your application.",
+                "snapshotpl/api-tools-snap-event-debugger": "ZfSnapEventDebugger can help you debug events from Laminas\\EventManager"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev",
+                    "dev-develop": "2.1.x-dev"
+                },
+                "laminas": {
+                    "module": "Laminas\\DeveloperTools"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laminas\\DeveloperTools\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Module for developer and debug tools for use with laminas-mvc applications.",
+            "homepage": "https://laminas.dev",
+            "keywords": [
+                "debug",
+                "developer",
+                "laminas",
+                "module"
+            ],
+            "time": "2019-12-31T16:40:02+00:00"
+        },
+        {
+            "name": "symfony/var-dumper",
+            "version": "v5.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/var-dumper.git",
+                "reference": "923591cfb78a935f0c98968fedfad05bfda9d01f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/923591cfb78a935f0c98968fedfad05bfda9d01f",
+                "reference": "923591cfb78a935f0c98968fedfad05bfda9d01f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2.5",
+                "symfony/polyfill-mbstring": "~1.0"
+            },
+            "conflict": {
+                "phpunit/phpunit": "<5.4.3",
+                "symfony/console": "<4.4"
+            },
+            "require-dev": {
+                "ext-iconv": "*",
+                "symfony/console": "^4.4|^5.0",
+                "symfony/process": "^4.4|^5.0",
+                "twig/twig": "^2.4|^3.0"
+            },
+            "suggest": {
+                "ext-iconv": "To convert non-UTF-8 strings to UTF-8 (or symfony/polyfill-iconv in case ext-iconv cannot be used).",
+                "ext-intl": "To show region name in time zone dump",
+                "symfony/console": "To use the ServerDumpCommand and/or the bin/var-dump-server script"
+            },
+            "bin": [
+                "Resources/bin/var-dump-server"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.0-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "Resources/functions/dump.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Component\\VarDumper\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony mechanism for exploring and dumping PHP variables",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "debug",
+                "dump"
+            ],
+            "time": "2020-01-25T15:56:29+00:00"
         }
     ],
     "aliases": [],

@@ -9,6 +9,7 @@ return [
         'Laminas\Router',
         'DoctrineModule',
         'DoctrineORMModule',
+        'Laminas\DeveloperTools', ///// @todo dev
         'Application',
         'Expense',
         'AnnualReport',

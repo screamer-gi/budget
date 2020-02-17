@@ -18,7 +18,8 @@
         "lstrojny/functional-php": "@stable"
     },
     "require-dev": {
-        "laminas/laminas-component-installer": "^2.1"
+        "laminas/laminas-component-installer": "^2.1",
+        "laminas/laminas-developer-tools": "^2.0"
     },
     "repositories": [
         {
