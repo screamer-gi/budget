@@ -2,6 +2,7 @@
 
 namespace Expense\Persistence\Entity;
 
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -22,6 +23,7 @@ class Expense
     public $id;
 
     /**
+     * @var DateTimeImmutable
      * @ORM\Column(type="date")
      */
     public $date;
@@ -47,6 +49,7 @@ class Expense
     public $comment;
 
     /**
+     * @var Detail[]
      * @ORM\OneToMany(targetEntity="Expense\Persistence\Entity\Detail", mappedBy="expense", cascade={"ALL"})
      */
     public $details;

@@ -23,6 +23,11 @@ class Category
      */
     public $title;
 
+    /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
+    public $ordering;
 
     public function __construct()
     {
